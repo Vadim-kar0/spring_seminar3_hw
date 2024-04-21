@@ -1,7 +1,15 @@
 package ru.gb.seminar3_hw.domain;
 
+import jdk.jfr.DataAmount;
+
+import java.util.concurrent.atomic.AtomicInteger;
+
+
 public class User {
 
+
+
+    private int id;
     private String name;
     private int age;
     private String email;
@@ -13,6 +21,14 @@ public class User {
     }
 
     public User() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

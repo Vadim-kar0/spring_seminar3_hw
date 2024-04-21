@@ -13,6 +13,7 @@ public class UserService {
     public User createUser(String name, int age, String email)
     {
         User user = new User();
+
         user.setName(name);
         user.setAge(age);
         user.setEmail(email);

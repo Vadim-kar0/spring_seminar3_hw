@@ -16,13 +16,21 @@ public class UserController {
 
     @GetMapping
     public List<User> userList() {
-        return service.getDataProcessingService().getRepository().getUsers();
+        return service.getDataProcessingService().getRepository().findAll();
     }
 
     @PostMapping("/body")
     public String userAddFromBody(@RequestBody User user)
     {
-        service.getDataProcessingService().getRepository().getUsers().add(user);
-        return "User added from body!";
+        return service.processRegistration(user.getName(),user.getAge(),user.getEmail());
     }
+
+    @PostMapping("/param")
+    @ResponseBody
+    public String userAddFromParam(@RequestParam("name") String name
+                                    ,@RequestParam("age") int age
+                                    ,@RequestParam("email") String email){
+        return service.processRegistration(name,age,email);
+    }
+
 }

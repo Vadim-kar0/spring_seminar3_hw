@@ -19,28 +19,22 @@ public class DataProcessingService {
         return repository;
     }
 
-    public void  addUserToList(User user)
+    public void  addUser(User user)
     {
-        repository.getUsers().add(user);
+        repository.addUser(user);
     }
 
-    public List<User> sortUsersByAge(List<User> users) {
+    public List<User> sortUsersByAge() {
 
-        return users.stream()
-                .sorted(Comparator.comparing(User::getAge))
-                .collect(Collectors.toList());
+
+        return repository.sortUserByAge();
     }
 
-    public List<User> filterUsersByAge(List<User> users, int age) {
-        return users.stream()
-                .filter(user -> user.getAge() > age)
-                .collect(Collectors.toList());
+    public List<User> filterUsersByAge(int age) {
+        return repository.filterUserByAge(age);
     }
 
     public double calculateAverageAge(List<User> users) {
-        return users.stream()
-                .mapToInt(User::getAge)
-                .average()
-                .orElse(0);
+        return repository.averageAgeUser();
     }
 }

@@ -6,8 +6,9 @@ import ru.gb.seminar3_hw.domain.User;
 @Service
 public class NotificationService {
 
-    public void notifyUser(User user) {
+    public String notifyUser(User user) {
         System.out.println("A new user has been created: " + user.getName());
+        return "A new user has been created: " + user.getName();
     }
 
     public void sendNotification(String s) {

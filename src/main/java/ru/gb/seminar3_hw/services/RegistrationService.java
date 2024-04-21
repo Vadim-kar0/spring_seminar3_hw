@@ -23,14 +23,18 @@ public class RegistrationService {
         return dataProcessingService;
     }
 
+    public UserService getUserService() {
+        return userService;
+    }
 
-
+    public NotificationService getNotificationService() {
+        return notificationService;
+    }
     //Поля UserService, NotificationService
 
-    public User processRegistration(String name, int age, String email){
+    public String processRegistration(String name, int age, String email){
         User user = userService.createUser(name, age, email);
-        dataProcessingService.addUserToList(user);
-        notificationService.notifyUser(user);
-        return user;
+        dataProcessingService.addUser(user);
+        return notificationService.notifyUser(user);
     }
 }
